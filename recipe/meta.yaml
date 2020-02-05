@@ -23,7 +23,7 @@ requirements:
     - setuptools
   run:
     - python
-    - pyobjc-core
+    - pyobjc-core >=6.1
 
 test:
   requires:
