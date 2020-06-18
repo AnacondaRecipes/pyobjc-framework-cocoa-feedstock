@@ -1,0 +1,27 @@
+From a7356392cdd36f82fed23a25fab54c38cfc4317e Mon Sep 17 00:00:00 2001
+From: Jonathan Helmus <jjhelmus@gmail.com>
+Date: Thu, 18 Jun 2020 15:57:55 -0500
+Subject: [PATCH] do not add Werror
+
+---
+ pyobjc_setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyobjc_setup.py b/pyobjc_setup.py
+index ecd5aca..858e72a 100644
+--- a/pyobjc_setup.py
++++ b/pyobjc_setup.py
+@@ -440,8 +440,8 @@ def Extension(*args, **kwds):
+     if os_level == "10.4":
+         cflags.append("-DNO_OBJC2_RUNTIME")
+ 
+-    if "-Werror" not in cflags:
+-        cflags.append("-Werror")
++    #if "-Werror" not in cflags:
++    #    cflags.append("-Werror")
+ 
+     if "extra_compile_args" in kwds:
+         kwds["extra_compile_args"] = kwds["extra_compile_args"] + cflags
+-- 
+2.23.0
+
