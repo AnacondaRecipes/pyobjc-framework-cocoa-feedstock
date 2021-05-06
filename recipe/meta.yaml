@@ -16,8 +16,6 @@ build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k]
-  missing_dso_whitelist:
-    - '**libffi.7.dylib'
 
 requirements:
   host:
@@ -31,6 +29,7 @@ requirements:
 test:
   requires:
     - pip
+    - libffi
   commands:
     - pip check
   imports:
