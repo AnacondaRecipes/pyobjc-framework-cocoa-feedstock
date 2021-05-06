@@ -10,7 +10,7 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: c8b23f03dc3f4436d36c0fd006a8a084835c4f6015187df7c3aa5de8ecd5c653
   patches:
-    - 0001-do-not-add-Werror.patch
+    #- 0001-do-not-add-Werror.patch
 
 build:
   number: 0
@@ -24,7 +24,7 @@ requirements:
     - setuptools
   run:
     - python
-    - pyobjc-core >={{ version }}
+    - pyobjc-core >=7.2
 
 test:
   requires:
