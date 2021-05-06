@@ -17,7 +17,7 @@ build:
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k]
   missing_dso_whitelist:
-    - '**ibffi.7.dylib'
+    - '**libffi.7.dylib'
 
 requirements:
   host:
