@@ -16,6 +16,8 @@ build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [(not osx) or py2k]
+  missing_dso_whitelist:
+    - '**ibffi.7.dylib'
 
 requirements:
   host:
@@ -24,7 +26,7 @@ requirements:
     - setuptools
   run:
     - python
-    - pyobjc-core >=7.2
+    - pyobjc-core >={{ version }}
 
 test:
   requires:
