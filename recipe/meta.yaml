@@ -22,6 +22,7 @@ requirements:
     - python
     - pip
     - setuptools
+    - wheel
   run:
     - python
     - pyobjc-core >={{ version }}
@@ -42,7 +43,10 @@ about:
   home: https://bitbucket.org/ronaldoussoren/pyobjc
   license: MIT
   license_file: LICENSE.txt
+  license_family: MIT
   summary: Wrappers for the Cocoa frameworks on Mac OS X
+  dev_url: https://github.com/ronaldoussoren/pyobjc/tree/master/pyobjc-framework-Cocoa
+  doc_url: https://github.com/ronaldoussoren/pyobjc/blob/master/pyobjc-framework-Cocoa/README.txt
 
 extra:
   recipe-maintainers:
