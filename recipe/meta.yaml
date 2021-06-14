@@ -19,12 +19,12 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
     - setuptools
     - wheel
   run:
-    - python
+    - python >=3.6
     - pyobjc-core >={{ version }}
 
 test:
