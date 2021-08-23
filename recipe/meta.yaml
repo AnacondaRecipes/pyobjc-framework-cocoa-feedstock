@@ -1,4 +1,4 @@
-{% set version = "6.2.2" %}
+{% set version = "7.3" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -8,23 +8,24 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 75821b98fb789d240bea7034c4f96396b2eac3e7b02428b4be9101fc899b7fc3
-  patches:
-    - 0001-do-not-add-Werror.patch
+  sha256: b18d05e7a795a3455ad191c3e43d6bfa673c2a4fd480bb1ccf57191051b80b7e
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [(not osx) or py2k]
+  script:
+    - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    - {{ PYTHON }} -m pip install . -vv
+  skip: true  # [(not osx) or py2k or (arm64 and py < 38)]
 
 requirements:
   host:
     - python
     - pip
     - setuptools
+    - wheel
   run:
     - python
-    - pyobjc-core >={{ version }}
+    - pyobjc-core >=7.1
 
 test:
   requires:
@@ -39,11 +40,13 @@ test:
     - PyObjCTools
 
 about:
-  home: https://bitbucket.org/ronaldoussoren/pyobjc
+  home: https://github.com/ronaldoussoren/pyobjc
   license: MIT
   license_file: LICENSE.txt
   summary: Wrappers for the Cocoa frameworks on Mac OS X
+  doc_url: https://pyobjc.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
+    - leofang
     - jschueller
