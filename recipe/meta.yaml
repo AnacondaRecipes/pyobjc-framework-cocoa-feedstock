@@ -24,14 +24,12 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
-    - libffi
     - pip
     - setuptools
     - wheel
   run:
     - python
     - pyobjc-core {{ version }}
-    - libffi
 
 test:
   requires:
