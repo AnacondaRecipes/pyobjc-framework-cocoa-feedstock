@@ -1,4 +1,4 @@
-{% set version = "7.3" %}
+{% set version = "8.5" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -14,18 +14,24 @@ build:
   number: 0
   script:
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    # force ignoring invalid compiler flag (-Wl,-export-dynamic)
+    - export CFLAGS="${CFLAGS} -Wno-unused-command-line-argument"  # [py == 37 or py == 38]
     - {{ PYTHON }} -m pip install . -vv
-  skip: true  # [(not osx) or py2k or (arm64 and py < 38)]
+  skip: true  # [(not osx) or py<36 or (arm64 and py < 38)]
 
 requirements:
+  build:
+    - {{ compiler('c') }}
   host:
     - python
+    - libffi
     - pip
     - setuptools
     - wheel
   run:
     - python
-    - pyobjc-core >=7.1
+    - pyobjc-core {{ version }}
+    - libffi
 
 test:
   requires:
@@ -42,9 +48,11 @@ test:
 about:
   home: https://github.com/ronaldoussoren/pyobjc
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
   summary: Wrappers for the Cocoa frameworks on Mac OS X
   doc_url: https://pyobjc.readthedocs.io/en/latest/
+  dev_url: https://github.com/ronaldoussoren/pyobjc
 
 extra:
   recipe-maintainers:
