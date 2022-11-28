@@ -27,11 +27,13 @@ requirements:
     - patch
   host:
     - python
+    - libffi 3.4
     - pip
     - setuptools
     - wheel
   run:
     - python
+    - libffi >=3.4,<3.5
     - pyobjc-core {{ version }}
 
 test:
