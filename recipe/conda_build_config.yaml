@@ -1,3 +1,7 @@
-MACOSX_SDK_VERSION:        # [osx]
-  - "11.3"                 # [osx and arm64]
-  - "10.15"                # [osx and x86_64]
+MACOSX_SDK_VERSION:       # [osx]
+  - "11.3"                  # [osx and arm64]
+  # SDK >=10.14 is needed on osx64 to prevent using the flag -Wno-unused-parameter, 
+  # see https://github.com/ronaldoussoren/pyobjc/blob/595adfb6a08b41da8d565bb28aa508b22c946e46/pyobjc-core/setup.py#L607
+  - "10.14"                  # [osx and x86_64]
+CONDA_BUILD_SYSROOT:       # [osx and x86_64]
+  - /opt/MacOSX10.14.sdk   # [osx and x86_64]
