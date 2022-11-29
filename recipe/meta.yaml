@@ -39,8 +39,6 @@ test:
     - pip
   commands:
     - python -m pip check
-  imports:
-    - Cocoa
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
