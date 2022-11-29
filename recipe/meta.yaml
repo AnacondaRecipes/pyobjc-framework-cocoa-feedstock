@@ -35,10 +35,6 @@ requirements:
     - pyobjc-core {{ version }}
 
 test:
-  requires:
-    - pip
-  commands:
-    - pip check
   imports:
     - AppKit
     - Cocoa
