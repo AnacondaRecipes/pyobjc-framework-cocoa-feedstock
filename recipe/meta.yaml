@@ -39,7 +39,7 @@ test:
     - pip
     - python
   commands:
-    - cat run_test.py
+    #- cat run_test.py
     - cat run_test.sh
     - cat conda_test_runner.sh
     - python -m pip check
