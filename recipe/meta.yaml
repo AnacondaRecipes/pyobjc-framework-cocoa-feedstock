@@ -39,6 +39,12 @@ test:
     - pip
   commands:
     - python -m pip check
+  imports:
+    - AppKit
+    - Cocoa
+    - CoreFoundation
+    - Foundation
+    - PyObjCTools
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
