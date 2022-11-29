@@ -39,16 +39,13 @@ test:
     - pip
     - python
   commands:
-    #- cat run_test.py
-    - cat run_test.sh
-    - cat conda_test_runner.sh
     - python -m pip check
-  #imports:
-    # - AppKit
-    # - Cocoa
-    # - CoreFoundation
-    # - Foundation
-    # - PyObjCTools
+  imports:
+    - AppKit
+    - Cocoa
+    - CoreFoundation
+    - Foundation
+    - PyObjCTools
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
