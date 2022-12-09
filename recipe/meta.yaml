@@ -9,9 +9,11 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 569bd3a020f64b536fb2d1c085b37553e50558c9f907e08b73ffc16ae68e1861
+  patches:
+    - fix-uninitialize-var.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
     # force ignoring invalid compiler flag (-Wl,-export-dynamic)
@@ -22,6 +24,8 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - patch                # [not win]
+    - m2-patch             # [win]
   host:
     - python
     - pip
