@@ -1,0 +1,13 @@
+Index: work/Modules/_Foundation_string.m
+===================================================================
+--- work.orig/Modules/_Foundation_string.m
++++ work/Modules/_Foundation_string.m
+@@ -15,7 +15,7 @@ call_NSString_getCString_maxLength_range
+     NSUInteger        maxLength;
+     struct objc_super super;
+     PyObject*         res;
+-    PyObject *        buf1, *buf2;
++    PyObject *        buf1, *buf2 = NULL;
+ 
+     if (PyObjC_CheckArgCount(method, 4, 4, nargs) == -1) {
+         return NULL;
