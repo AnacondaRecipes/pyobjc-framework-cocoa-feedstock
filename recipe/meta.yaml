@@ -13,7 +13,7 @@ source:
     - fix-uninitialize-var.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
     # force ignoring invalid compiler flag (-Wl,-export-dynamic)
