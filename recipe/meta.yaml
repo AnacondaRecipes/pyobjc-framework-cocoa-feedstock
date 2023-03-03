@@ -31,9 +31,11 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - libffi
   run:
     - python
     - pyobjc-core {{ version }}
+    - libffi
 
 test:
   requires:
