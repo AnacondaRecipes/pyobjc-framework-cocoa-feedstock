@@ -2,5 +2,5 @@
 #   - "11.3"                 # [osx and arm64]
 #   - "10.15"                # [osx and x86_64]
 CONDA_BUILD_SYSROOT:
-  - /opt/MacOSX10.15.sdk        # [osx and x86_64]
+  - /opt/MacOSX10.14.sdk        # [osx and x86_64]
   - /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk  # [osx and arm64]
