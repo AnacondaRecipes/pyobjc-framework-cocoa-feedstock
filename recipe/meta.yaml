@@ -53,6 +53,9 @@ about:
   license_family: MIT
   license_file: LICENSE.txt
   summary: Wrappers for the Cocoa frameworks on Mac OS X
+  description: |
+    Wrappers for framework 'Cocoa', that is frameworks 'CoreFoundation',
+    'Foundation' and 'AppKit'.
   doc_url: https://pyobjc.readthedocs.io/en/latest/
   dev_url: https://github.com/ronaldoussoren/pyobjc
 
