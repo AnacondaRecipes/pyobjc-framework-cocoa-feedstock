@@ -33,7 +33,7 @@ requirements:
     - libffi {{ libffi }}
   run:
     - python
-    - pyobjc-core {{ version }}
+    - pyobjc-core >={{ version }}
     - libffi
 
 test:
