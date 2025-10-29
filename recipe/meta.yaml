@@ -1,4 +1,4 @@
-{% set version = "10.1" %}
+{% set version = "12.0" %}
 {% set name = "pyobjc-framework-Cocoa" %}
 
 package:
@@ -7,8 +7,8 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8faaf1292a112e488b777d0c19862d993f3f384f3927dc6eca0d8d2221906a14
+  url: https://pypi.org/packages/source/p/pyobjc-framework-Cocoa/pyobjc_framework_cocoa-12.0.tar.gz
+  sha256: 02d69305b698015a20fcc8e1296e1528e413d8cf9fdcd590478d359386d76e8a
   patches:
     - fix-uninitialize-var.patch
 
@@ -19,7 +19,7 @@ build:
     # force ignoring invalid compiler flag (-Wl,-export-dynamic)
     - export CFLAGS="${CFLAGS} -Wno-unused-command-line-argument"  # [py == 37 or py == 38]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [(not osx) or py<38]
+  skip: true  # [(not osx) or py<39]
 
 requirements:
   build:
@@ -33,7 +33,7 @@ requirements:
     - libffi {{ libffi }}
   run:
     - python
-    - pyobjc-core >={{ version }}
+    - pyobjc-core >=12.0
     - libffi
 
 test:
