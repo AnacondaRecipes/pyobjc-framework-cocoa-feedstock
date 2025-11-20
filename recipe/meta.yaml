@@ -1,30 +1,24 @@
-{% set version = "10.1" %}
 {% set name = "pyobjc-framework-Cocoa" %}
+{% set version = "12.1" %}
+{% set pypi_name = name|replace("-", "_")|lower %}
 
 package:
-  name: pyobjc-framework-cocoa
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8faaf1292a112e488b777d0c19862d993f3f384f3927dc6eca0d8d2221906a14
-  patches:
-    - fix-uninitialize-var.patch
+  url: https://pypi.org/packages/source/{{ pypi_name[0] }}/{{ name }}/{{ pypi_name }}-{{ version }}.tar.gz
+  sha256: 5556c87db95711b985d5efdaaf01c917ddd41d148b1e52a0c66b1a2e2c5c1640
 
 build:
   number: 0
-  script:
-    - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
-    # force ignoring invalid compiler flag (-Wl,-export-dynamic)
-    - export CFLAGS="${CFLAGS} -Wno-unused-command-line-argument"  # [py == 37 or py == 38]
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [(not osx) or py<38]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [not osx or py<310]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - patch
   host:
     - python
     - pip
@@ -34,13 +28,14 @@ requirements:
   run:
     - python
     - pyobjc-core >={{ version }}
-    - libffi
+    - libffi {{ libffi }}
 
 test:
   requires:
     - pip
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
   imports:
     - AppKit
     - Cocoa
