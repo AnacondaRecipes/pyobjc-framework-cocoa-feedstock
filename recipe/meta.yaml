@@ -51,7 +51,7 @@ about:
   summary: Wrappers for the Cocoa frameworks on Mac OS X
   description: |
     Wrappers for framework 'Cocoa', that is frameworks 'CoreFoundation',
-    'Foundation' and 'AppKit'.
+    'Foundation' and 'AppKit'
   doc_url: https://pyobjc.readthedocs.io
   dev_url: https://github.com/ronaldoussoren/pyobjc
 
