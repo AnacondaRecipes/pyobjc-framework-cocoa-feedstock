@@ -9,19 +9,21 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ pypi_name[0] }}/{{ name }}/{{ pypi_name }}-{{ version }}.tar.gz
   sha256: 5556c87db95711b985d5efdaaf01c917ddd41d148b1e52a0c66b1a2e2c5c1640
+  patches:
+    - fix-uninitialize-var.patch
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [not osx or py<310]
-
-  ignore_run_exports:
-    - libffi
 
 requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
+    - patch
   host:
     - python
     - pip
