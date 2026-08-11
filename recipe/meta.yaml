@@ -1,5 +1,5 @@
 {% set name = "pyobjc-framework-Cocoa" %}
-{% set version = "12.1" %}
+{% set version = "12.2.1" %}
 {% set pypi_name = name|replace("-", "_")|lower %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ pypi_name[0] }}/{{ name }}/{{ pypi_name }}-{{ version }}.tar.gz
-  sha256: 5556c87db95711b985d5efdaaf01c917ddd41d148b1e52a0c66b1a2e2c5c1640
+  sha256: b94b37fe5730e5ae1fb0052912cd174e6ec329b0bfba4a012ae5db1014b5864b
   patches:
     - fix-uninitialize-var.patch
 
@@ -23,17 +23,14 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - patch
   host:
     - python
     - pip
     - setuptools
     - wheel
-    - libffi {{ libffi }}
   run:
     - python
     - pyobjc-core >={{ version }}
-    - libffi {{ libffi }}
 
 test:
   requires:
